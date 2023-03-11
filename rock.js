@@ -37,15 +37,26 @@ function playRound(playerSelection=getPlayerSelection(),computerChoice=getComput
 }
 
 function game() {
+    let computerScore=0;
+    let playerScore=0;
     for (let i=0;i<5;i++) {
         // get choices and play a round
         let computer = getComputerChoice()
         let player = getPlayerSelection()
         let result=playRound(player,computer)
 
+
+
         if (result === 0) {console.log(`It's a draw, both ${computer}`)}
-        else if (result === 1 ) {console.log(`You win, ${player} beats ${computer}`)}
-        else if (result === -1 ) {console.log(`You lose, ${computer} beats ${player}`)}
+        else if (result === 1 ) {
+            console.log(`You win, ${player} beats ${computer}`)
+            playerScore++;
+        }
+        else if (result === -1 ) {
+            console.log(`You lose, ${computer} beats ${player}`)
+            computerScore++;
+        }
+        console.log(`The score is Player: ${playerScore} Computer: ${computerScore}`)
     }
 }
 
