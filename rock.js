@@ -5,3 +5,8 @@ function getComputerChoice() {
     else if (computerChoice === 2) { return "scissors"}
 }
 
+function getPlayerSelection() {
+    let playerSelection = prompt("Make your choice").toLowerCase()
+    return playerSelection
+}
+
