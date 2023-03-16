@@ -10,7 +10,7 @@ function getPlayerSelection() {
     return playerSelection
 }
 
-function playRound(playerSelection=getPlayerSelection(),computerChoice=getComputerChoice()) {
+function getResultOf(playerSelection=getPlayerSelection(),computerChoice=getComputerChoice()) {
     if (playerSelection === "rock") { 
 
         if (playerSelection === computerChoice) {return 0}
@@ -32,34 +32,44 @@ function playRound(playerSelection=getPlayerSelection(),computerChoice=getComput
 
       }
     else  { return "invalid input" }
-
+    
 
 }
 
-function game() {
-    let computerScore=0;
-    let playerScore=0;
-    for (let i=0;i<5;i++) {
-        // get choices and play a round
-        let computer = getComputerChoice()
-        let player = getPlayerSelection()
-        let result=playRound(player,computer)
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button)=> {
+    button.addEventListener("click",() =>{
+    playerSelection=button.textContent.toLowerCase();
+    computerChoice= getComputerChoice();
+    result= getResultOf(playerSelection,computerChoice);
+    console.log(result);
+    })
+})
+
+// function game() {
+//     let computerScore=0;
+//     let playerScore=0;
+//     for (let i=0;i<5;i++) {
+//         // get choices and play a round
+//         let computer = getComputerChoice()
+//         let player = getPlayerSelection()
+//         let result=playRound(player,computer)
 
 
 
-        if (result === 0) {console.log(`It's a draw, both ${computer}`)}
-        else if (result === 1 ) {
-            console.log(`You win, ${player} beats ${computer}`)
-            playerScore++;
-        }
-        else if (result === -1 ) {
-            console.log(`You lose, ${computer} beats ${player}`)
-            computerScore++;
-        }
-        console.log(`The score is Player: ${playerScore} Computer: ${computerScore}`)
-    }
-}
+//         if (result === 0) {console.log(`It's a draw, both ${computer}`)}
+//         else if (result === 1 ) {
+//             console.log(`You win, ${player} beats ${computer}`)
+//             playerScore++;
+//         }
+//         else if (result === -1 ) {
+//             console.log(`You lose, ${computer} beats ${player}`)
+//             computerScore++;
+//         }
+//         console.log(`The score is Player: ${playerScore} Computer: ${computerScore}`)
+//     }
+// }
 
-game()
+// game()
 // result=playRound();
 // console.log(result)
