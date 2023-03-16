@@ -36,15 +36,18 @@ function getResultOf(playerSelection=getPlayerSelection(),computerChoice=getComp
 
 }
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button)=> {
+function playRound(button) {
     button.addEventListener("click",() =>{
-    playerSelection=button.textContent.toLowerCase();
-    computerChoice= getComputerChoice();
-    result= getResultOf(playerSelection,computerChoice);
-    console.log(result);
-    })
-})
+        playerSelection=button.textContent.toLowerCase();
+        computerChoice= getComputerChoice();
+        result= getResultOf(playerSelection,computerChoice);
+        console.log(result);
+        })
+
+}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach(playRound)
 
 // function game() {
 //     let computerScore=0;
