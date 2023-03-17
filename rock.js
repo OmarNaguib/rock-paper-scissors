@@ -1,4 +1,7 @@
-
+function getWinner(playerScore,computerScore) {
+    if (playerScore > computerScore) return "you win"
+    else {return "The computer wins"}
+}
 
 
 function getComputerChoice() {
@@ -39,37 +42,34 @@ function getResultOf(playerSelection=getPlayerSelection(),computerChoice=getComp
 
 }
 
-// function changeScore() {
-//     if (result === 1 ) playerScore++
-//     else if (result === -1) computerScore--
-// }
 
-function displayCurrent(result,player,computer) {
+function displayCurrent(result,playerChoice,computerChoice) {
     let text;
-    if (result === 0) {text = `It's a draw, both ${computer}`}  
+    if (result === 0) {text = `It's a draw, both ${computerChoice}`}  
     else if (result === 1 ) {
-        text= `You win, ${player} beats ${computer}`
+        text= `You win, ${playerChoice} beats ${computerChoice}`
         playerScore++;
     }
     else if (result === -1 ) {
-        text = `You lose, ${computer} beats ${player}`
+        text = `You lose, ${computerChoice} beats ${playerChoice}`
         computerScore++;
     }
     text += `\n The score is \n player:${playerScore} - computer:${computerScore} `
 
     if (playerScore=== 5 || computerScore=== 5) {
         text += `\n Game over \n `
+        text+= getWinner(playerChoice,computerChoice)
     }
     return text;
 }
 
 function addListeners(button) {
     button.addEventListener("click",() =>{
-        let player=button.textContent.toLowerCase();
-        let computer= getComputerChoice();
-        let result= getResultOf(player,computer);
+        let playerChoice=button.textContent.toLowerCase();
+        let computerChoice= getComputerChoice();
+        let result= getResultOf(playerChoice,computerChoice);
         console.log(result)
-        display.textContent=displayCurrent(result,player,computer)
+        display.textContent=displayCurrent(result,playerChoice,computerChoice)
         })
 
 }
