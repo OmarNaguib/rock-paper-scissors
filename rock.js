@@ -1,3 +1,6 @@
+
+
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
     if (computerChoice === 0) { return "rock"}
@@ -36,18 +39,47 @@ function getResultOf(playerSelection=getPlayerSelection(),computerChoice=getComp
 
 }
 
-function playRound(button) {
+// function changeScore() {
+//     if (result === 1 ) playerScore++
+//     else if (result === -1) computerScore--
+// }
+
+function displayCurrent(result,player,computer) {
+    let text;
+    if (result === 0) {text = `It's a draw, both ${computer}`}  
+    else if (result === 1 ) {
+        text= `You win, ${player} beats ${computer}`
+        playerScore++;
+    }
+    else if (result === -1 ) {
+        text = `You lose, ${computer} beats ${player}`
+        computerScore++;
+    }
+    text += `\n The score is \n player:${playerScore} - computer:${computerScore} `
+
+    if (playerScore=== 5 || computerScore=== 5) {
+        text += `\n Game over \n `
+    }
+    return text;
+}
+
+function addListeners(button) {
     button.addEventListener("click",() =>{
-        playerSelection=button.textContent.toLowerCase();
-        computerChoice= getComputerChoice();
-        result= getResultOf(playerSelection,computerChoice);
-        console.log(result);
+        let player=button.textContent.toLowerCase();
+        let computer= getComputerChoice();
+        let result= getResultOf(player,computer);
+        console.log(result)
+        display.textContent=displayCurrent(result,player,computer)
         })
 
 }
 
 const buttons = document.querySelectorAll("button");
-buttons.forEach(playRound)
+const display=document.querySelector("#display");
+let playerScore=0;
+let computerScore=0; 
+buttons.forEach(addListeners);
+
 
 // function game() {
 //     let computerScore=0;
