@@ -79,32 +79,3 @@ const display=document.querySelector("#display");
 let playerScore=0;
 let computerScore=0; 
 buttons.forEach(addListeners);
-
-
-// function game() {
-//     let computerScore=0;
-//     let playerScore=0;
-//     for (let i=0;i<5;i++) {
-//         // get choices and play a round
-//         let computer = getComputerChoice()
-//         let player = getPlayerSelection()
-//         let result=playRound(player,computer)
-
-
-
-//         if (result === 0) {console.log(`It's a draw, both ${computer}`)}
-//         else if (result === 1 ) {
-//             console.log(`You win, ${player} beats ${computer}`)
-//             playerScore++;
-//         }
-//         else if (result === -1 ) {
-//             console.log(`You lose, ${computer} beats ${player}`)
-//             computerScore++;
-//         }
-//         console.log(`The score is Player: ${playerScore} Computer: ${computerScore}`)
-//     }
-// }
-
-// game()
-// result=playRound();
-// console.log(result)
