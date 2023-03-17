@@ -1,9 +1,3 @@
-function getWinner(playerScore,computerScore) {
-    if (playerScore > computerScore) return "you win"
-    else {return "The computer wins"}
-}
-
-
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
     if (computerChoice === 0) { return "rock"}
@@ -58,9 +52,15 @@ function displayCurrent(result,playerChoice,computerChoice) {
 
     if (playerScore=== 5 || computerScore=== 5) {
         text += `\n Game over \n `
-        text+= getWinner(playerChoice,computerChoice)
+        text+= getWinner(playerScore,computerScore)
+        document.querySelector(".container").remove()
     }
     return text;
+}
+
+function getWinner(playerScore,computerScore) {
+    if (playerScore > computerScore) return "Congratulations! you have won"
+    else {return "The computer have won"}
 }
 
 function addListeners(button) {
