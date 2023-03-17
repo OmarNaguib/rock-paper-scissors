@@ -60,7 +60,7 @@ function displayCurrent(result,playerChoice,computerChoice) {
 
 function getWinner(playerScore,computerScore) {
     if (playerScore > computerScore) return "Congratulations! you have won"
-    else {return "The computer have won"}
+    else {return "The computer has won"}
 }
 
 function addListeners(button) {
